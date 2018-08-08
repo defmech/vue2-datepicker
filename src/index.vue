@@ -5,9 +5,6 @@
       'mx-datepicker-range': range,
       'disabled': disabled
     }"
-    :style="{
-      'width': computedWidth
-    }"
     v-clickoutside="closePopup">
     <div class="mx-input-wrapper"
       @click="showPopup">
@@ -215,12 +212,6 @@ export default {
       return isValidRange(this.value)
         ? `${this.stringify(this.value[0])} ${this.rangeSeparator} ${this.stringify(this.value[1])}`
         : ''
-    },
-    computedWidth () {
-      if (typeof this.width === 'number' || (typeof this.width === 'string' && /^\d+$/.test(this.width))) {
-        return this.width + 'px'
-      }
-      return this.width
     },
     showClearIcon () {
       return !this.disabled && this.clearable && (this.range ? isValidRange(this.value) : isValidDate(this.value))
