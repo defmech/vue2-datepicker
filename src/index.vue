@@ -1,12 +1,12 @@
 <template>
   <div
-    class="mx-datepicker"
+    class="ib-datepicker"
     :class="{
-      'mx-datepicker-range': range,
+      'ib-datepicker-range': range,
       'disabled': disabled
     }"
     v-clickoutside="closePopup">
-    <div class="mx-input-wrapper"
+    <div class="ib-input-wrapper"
       @click="showPopup">
       <input
         :class="inputClass"
@@ -19,9 +19,9 @@
         :placeholder="innerPlaceholder"
         @input="handleInput"
         @change="handleChange">
-      <span class="mx-input-append">
+      <span class="ib-input-append">
         <slot name="calendar-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 200 200" class="mx-calendar-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 200 200" class="ib-calendar-icon">
             <rect x="13" y="29" rx="14" ry="14" width="174" height="158" fill="transparent" />
             <line x1="46" x2="46" y1="8" y2="50" />
             <line x1="154" x2="154" y1="8" y2="50" />
@@ -32,23 +32,23 @@
       </span>
       <span
         v-if="showClearIcon"
-        class="mx-input-append mx-clear-wrapper"
+        class="ib-input-append ib-clear-wrapper"
         @click.stop="clearDate">
-        <slot name="mx-clear-icon">
-          <i class="mx-input-icon mx-clear-icon"></i>
+        <slot name="ib-clear-icon">
+          <i class="ib-input-icon ib-clear-icon"></i>
         </slot>
       </span>
     </div>
-    <div class="mx-datepicker-popup"
+    <div class="ib-datepicker-popup"
       :style="position"
       v-show="popupVisible"
       ref="calendar">
       <slot name="header">
-        <div class="mx-shortcuts-wrapper"
+        <div class="ib-shortcuts-wrapper"
           v-if="range && innnerShortcuts.length">
           <button
             type="button"
-            class="mx-shortcuts"
+            class="ib-shortcuts"
             v-for="(range, index) in innnerShortcuts"
             :key="index"
             @click="selectRange(range)">{{range.text}}</button>
@@ -61,7 +61,7 @@
         :visible="popupVisible"
         @select-date="selectDate"
         @select-time="selectTime"></calendar-panel>
-      <div class="mx-range-wrapper"
+      <div class="ib-range-wrapper"
         v-else>
         <calendar-panel
           style="box-shadow:1px 0 rgba(0, 0, 0, .1)"
@@ -82,10 +82,10 @@
           @select-time="selectEndTime"></calendar-panel>
       </div>
       <slot name="footer" :confirm="confirmDate">
-        <div class="mx-datepicker-footer"
+        <div class="ib-datepicker-footer"
           v-if="confirm">
           <button type="button"
-            class="mx-datepicker-btn mx-datepicker-btn-confirm"
+            class="ib-datepicker-btn ib-datepicker-btn-confirm"
             @click="confirmDate">{{ confirmText }}</button>
         </div>
       </slot>
@@ -165,7 +165,7 @@ export default {
     },
     inputClass: {
       type: [String, Array],
-      default: 'mx-input'
+      default: 'ib-input'
     }
   },
   data () {
